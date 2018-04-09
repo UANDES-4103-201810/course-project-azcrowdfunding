@@ -22,3 +22,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore schema file
+/db/schema.rb
