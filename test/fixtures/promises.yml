@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  description: MyString
+  edd: 2018-04-09 10:24:27
+  project: one
+
+two:
+  amount: 1
+  description: MyString
+  edd: 2018-04-09 10:24:27
+  project: two
