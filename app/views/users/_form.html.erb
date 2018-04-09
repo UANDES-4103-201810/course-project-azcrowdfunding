@@ -21,6 +21,12 @@
     <%= form.datetime_select :last_login, id: :user_last_login %>
   </div>
 
+  <%= form.fields_for :personal_info do |personal| %>
+    <%= personal.label :first_name %>
+    <%= personal.text_field :first_name %>
+  <% end %>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

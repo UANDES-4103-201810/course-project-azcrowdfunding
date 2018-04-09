@@ -15,10 +15,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.build_personal_info
   end
 
   # GET /users/1/edit
   def edit
+    @user.build_personal_info if @user.personal_info.nil?
   end
 
   # POST /users
@@ -69,6 +71,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:active, :last_login)
+      params.require(:user).permit(:active, :last_login, personal_info_attributes: [:first_name])
     end
 end
