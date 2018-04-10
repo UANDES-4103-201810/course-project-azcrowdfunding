@@ -11,23 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active, id: :user_active %>
-  </div>
+  <div class="form-group col-sm-5">
 
-  <div class="field">
-    <%= form.label :last_login %>
-    <%= form.datetime_select :last_login, id: :user_last_login %>
-  </div>
+    <div class="form-check">
+      <%= form.check_box :active, id: :user_active, class: 'form-check-input' %>
+      <label class="form-check-label" for="exampleCheck1"><%= form.label :active %></label>
+    </div>
 
-  <%= form.fields_for :personal_info do |personal| %>
-    <%= personal.label :first_name %>
-    <%= personal.text_field :first_name %>
-  <% end %>
+    <div class="field">
+      <%= form.label :last_login %>
+      <%= form.datetime_select :last_login, id: :user_last_login %>
+    </div>
+
+    <%= form.fields_for :personal_info do |personal| %>
+      <%= personal.label :first_name %>
+      <%= personal.text_field :first_name %>
+    <% end %>
 
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <!--<%= form.submit %>-->
+    </div>
   </div>
 <% end %>
