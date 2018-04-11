@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validate :date_notpast
   after_create :init
   def date_notpast
-    if self.last_login < Date.today
+    if self.last_login < DateTime.now
       errors.add(:expiration_date, "can't be in the past")
     end
   end

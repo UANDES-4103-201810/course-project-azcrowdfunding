@@ -7,13 +7,13 @@ class Contribution < ApplicationRecord
   after_create :init
 
   def date_not_past
-    if date < Date.today
+    if date < DateTime.now
       errors.add(:date, "can't be in the past")
     end
   end
 
   def init
-    self.date = Date.today
+    self.date = DateTime.now
   end
 
 end

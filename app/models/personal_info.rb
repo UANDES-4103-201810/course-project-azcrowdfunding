@@ -10,5 +10,11 @@ class PersonalInfo < ApplicationRecord
   belongs_to :user
   validates :first_name, presence: true
   validates :email, presence: true, email: true
+  validates :phone, length: { is: 9 }
+  after_create :init
+
+  def init
+    self.last_mod = DateTime.now
+  end
 
 end
