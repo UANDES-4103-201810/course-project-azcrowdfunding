@@ -4,7 +4,7 @@ class Contribution < ApplicationRecord
   validates :contribution, presence: true # shouldn't this be 'validates :amount, presence: true'?
   validate :date_not_past
   validates :amount, numericality: { greater_than: 0 }
-  after_initialize :init
+  after_create :init
 
   def date_not_past
     if date < Date.today

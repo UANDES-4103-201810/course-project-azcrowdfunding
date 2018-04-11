@@ -5,7 +5,7 @@ class Credential < ApplicationRecord
   validates :password, length: { maximum: 20 }
   validates :sec_q, presence: true
   validates :answer, presence: true
-  after_initialize :init
+  after_cre :init
 
   def init
     self.last_mod ||= Date.today

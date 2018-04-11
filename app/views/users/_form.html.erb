@@ -18,42 +18,58 @@
       <label class="form-check-label" for="exampleCheck1"><%= form.label :active %></label>
     </div>
 
-    <div class="field">
-      <%= form.label :last_login %>
-      <%= form.datetime_select :last_login, id: :user_last_login %>
-    </div>
     <div>
       <%= form.fields_for :personal_info do |personal| %>
-        <%= personal.label :first_name %>
-        <%= personal.text_field :first_name %>
-        <br>
-        <%= personal.label :last_name %>
-        <%= personal.text_field :last_name %>
-        <br>
-        <%= personal.label :phone %>
-        <%= personal.text_field :phone %>
-        <br>
-        <%= personal.label :admin %>
-        <%= personal.check_box :admin %>
-        <br>
-        <%= personal.label :email %>
-        <%= personal.text_field :email %>
-        <br>
-        <%= personal.label :address %>
-        <%= personal.text_field :address %>
-        <br>
-        <%= personal.label :country %>
-        <%= personal.text_field :country %>
-        <br>
-        <%= personal.label :city %>
-        <%= personal.text_field :city %>
+
+        <div class="form-check" >
+          <%= personal.check_box :admin, class: 'form-check-input' %>
+          <label class="form-check-label" for="exampleCheck2"><%= personal.label :admin %></label>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :first_name %></label>
+          <%= personal.text_field :first_name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :last_name %></label>
+          <%= personal.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :phone %></label>
+          <%= personal.text_field :phone, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :email %></label>
+          <%= personal.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :address %></label>
+          <%= personal.text_field :address, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :country %></label>
+          <%= personal.text_field :country, class: 'form-control' %>
+        </div>
+
+        <div class="form-group" >
+          <label><%= personal.label :city %></label>
+          <%= personal.text_field :city, class: 'form-control' %>
+        </div>
+
       <% end %>
+      <br>
     </div>
 
 
 
     <div class="actions">
       <button type="submit" class="btn btn-primary">Submit</button>
+      <%= link_to 'Cancel', users_path, class: "btn" %>
       <!--<%= form.submit %>-->
     </div>
   </div>
