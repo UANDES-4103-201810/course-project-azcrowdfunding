@@ -22,11 +22,34 @@
       <%= form.label :last_login %>
       <%= form.datetime_select :last_login, id: :user_last_login %>
     </div>
+    <div>
+      <%= form.fields_for :personal_info do |personal| %>
+        <%= personal.label :first_name %>
+        <%= personal.text_field :first_name %>
+        <br>
+        <%= personal.label :last_name %>
+        <%= personal.text_field :last_name %>
+        <br>
+        <%= personal.label :phone %>
+        <%= personal.text_field :phone %>
+        <br>
+        <%= personal.label :admin %>
+        <%= personal.check_box :admin %>
+        <br>
+        <%= personal.label :email %>
+        <%= personal.text_field :email %>
+        <br>
+        <%= personal.label :address %>
+        <%= personal.text_field :address %>
+        <br>
+        <%= personal.label :country %>
+        <%= personal.text_field :country %>
+        <br>
+        <%= personal.label :city %>
+        <%= personal.text_field :city %>
+      <% end %>
+    </div>
 
-    <%= form.fields_for :personal_info do |personal| %>
-      <%= personal.label :first_name %>
-      <%= personal.text_field :first_name %>
-    <% end %>
 
 
     <div class="actions">
