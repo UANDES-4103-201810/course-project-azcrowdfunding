@@ -3,9 +3,11 @@ class User < ApplicationRecord
   has_one :personal_info
   has_one :credential
   has_many :favorites
-  has_many :projects # => through(:favorites)
+  has_many :projects, through: :favorites
   has_many :contributions
+  has_many :projects, throug: :contributions
   has_many :financings
+  has_many :promises, throug: :financings
   validate :date_notpast
   after_create :init
   def date_notpast
