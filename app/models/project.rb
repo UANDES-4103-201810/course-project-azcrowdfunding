@@ -8,11 +8,11 @@ class Project < ApplicationRecord
   has_many :users, through: :favorites
   validates :active, presence: true
   validates :visible, presence: true
-  validate :release_date_not_past
+ # validate :relase_date_not_past
 
-  def relase_date_not_past
-    if relase_date < DateTime.now
-      errors.add(:date, "can't be in the past")
-    end
-  end
+  #def relase_date_not_past
+   # if relaese_date < DateTime.now
+    #  errors.add(:date, "can't be in the past")
+    #end
+ # end
 end
