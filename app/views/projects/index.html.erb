@@ -21,9 +21,9 @@
         <td><%= project.visible %></td>
         <td><%= project.release_date %></td>
         <td><%= project.user_id %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project, class: 'btn btn-link' %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), class: 'btn btn-link' %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %></td>
       </tr>
     <% end %>
     </tbody>

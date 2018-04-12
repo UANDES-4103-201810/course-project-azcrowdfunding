@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :projects
-  has_one :personal_info
+  has_one :personal_info, :dependent => :destroy
   has_one :credential
   has_many :favorites
   has_many :projects, through: :favorites
@@ -16,7 +16,7 @@ class User < ApplicationRecord
    # end
   #end
 
-  accepts_nested_attributes_for :personal_info
+  accepts_nested_attributes_for :personal_info, allow_destroy: true
 
   def init
     self.last_login = DateTime.now
