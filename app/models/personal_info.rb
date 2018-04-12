@@ -13,7 +13,6 @@ class PersonalInfo < ApplicationRecord
   validates :email, presence: true, email: true
   validates :phone, length: { is: 9 }
   after_create :init
-  validates :admin, presence: true
   validates :address, presence: true, length: { minimum: 4}
   validates :country, presence: true, length: {minimum: 3}
   validates :city, presence: true, length: {minimum: 3}
