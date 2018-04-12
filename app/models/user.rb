@@ -5,16 +5,16 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :projects, through: :favorites
   has_many :contributions
-  has_many :projects, throug: :contributions
+  has_many :projects, through: :contributions
   has_many :financings
-  has_many :promises, throug: :financings
-  validate :date_notpast
+  has_many :promises, through: :financings
+  #validate :date_notpast
   after_create :init
-  def date_notpast
-    if self.last_login < DateTime.now
-      errors.add(:expiration_date, "can't be in the past")
-    end
-  end
+  #def date_notpast
+   # if self.last_login < DateTime.now
+    #  errors.add(:expiration_date, "can't be in the past")
+   # end
+  #end
 
   accepts_nested_attributes_for :personal_info
 
