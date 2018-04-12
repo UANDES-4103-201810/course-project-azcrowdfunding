@@ -1,55 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Active:</strong>
-  <%= @user.active %>
-</p>
+  <p>
+    <strong>Active:</strong>
+    <%= @user.active %>
+  </p>
 
-<p>
-  <strong>Last login:</strong>
-  <%= @user.last_login %>
-</p>
+  <p>
+    <strong>Last login:</strong>
+    <%= @user.last_login %>
+  </p>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @user.personal_info.first_name %>
-</p>
+  <p>
+    <strong>First Name:</strong>
+    <%= @user.personal_info.first_name %>
+  </p>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.personal_info.last_name %>
-</p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @user.personal_info.last_name %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @user.personal_info.phone %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @user.personal_info.phone %>
+  </p>
 
-<p>
-  <strong>Admin:</strong>
-  <%= @user.personal_info.admin %>
-</p>
+  <p>
+    <strong>Admin:</strong>
+    <%= @user.personal_info.admin %>
+  </p>
 
-<p>
-  <strong>E-mail:</strong>
-  <%= @user.personal_info.email %>
-</p>
+  <p>
+    <strong>E-mail:</strong>
+    <%= @user.personal_info.email %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.personal_info.address %>
-</p>
+  <p>
+    <strong>Address:</strong>
+    <%= @user.personal_info.address %>
+  </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @user.personal_info.country %>
-</p>
+  <p>
+    <strong>Country:</strong>
+    <%= @user.personal_info.country %>
+  </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @user.personal_info.city %>
-</p>
+  <p>
+    <strong>City:</strong>
+    <%= @user.personal_info.city %>
+  </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %>
+  <%= link_to 'Back', users_path, class: "btn btn-danger" %>
+</div>
