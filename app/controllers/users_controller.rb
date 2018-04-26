@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = current_credential.users.build
   end
 
   # GET /users/1/edit
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = current_credential.users.build(user_params)
 
     respond_to do |format|
       if @user.save
@@ -69,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :phone, :admin, :address, :email, :country, :city, :username, :password, :security_question, :answer)
+      params.require(:user).permit(:first_name, :last_name, :phone, :admin, :address, :country, :city, :username)
     end
 end

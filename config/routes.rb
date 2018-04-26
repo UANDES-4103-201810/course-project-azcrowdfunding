@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :credentials, controllers: {
+      sessions: 'credentials/sessions'
+  }
+
   resources :categories
   resources :favorites
   resources :projects

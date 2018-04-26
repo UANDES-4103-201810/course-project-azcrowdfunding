@@ -28,11 +28,26 @@
       </ul>
       <div align="right">
         <ul class="nav navbar-nav navbar-right" align="right">
-          <li><a href="#" style="font-size: medium"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+          <li>
+            <% if credential_signed_in? %>
+            <li>Logged in as <strong><%= current_credential.email %></strong>.</li>
+            <li><%= link_to 'Edit profile', edit_credential_registration_path, :class => 'navbar-link' %></li>
+            <li><%= link_to "Logout", destroy_credential_session_path, method: :delete, :class => 'navbar-link' %></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_credential_registration_path, :class => 'navbar-link' %></li>
+              <li><%= link_to "Login", new_credential_session_path, :class => 'navbar-link' %></li>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
     <%= yield %>
   </body>
 </html>
