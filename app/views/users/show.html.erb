@@ -1,0 +1,73 @@
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
+
+  <div align="center">
+    <%= image_tag("generic_profile.jpeg",size: "200x200", alt: "Edit Entry", class: "img-circle") %>
+  </div>
+
+  <div align="center" style="padding-top: 10px">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-warning btn-sm" %>
+  </div>
+
+  <div class="row" style="padding-top: 20px">
+    <div class="col-sm-7">
+      <div class="panel panel-warning">
+        <div class="panel-heading">Credentials</div>
+        <div class="panel-body">
+          <strong>Username: </strong><%= @user.username %><br>
+          <strong>Password: </strong><%= @user.password %><br>
+          <strong>Security Question: </strong><%= @user.security_question %><br>
+          <strong>Answer: </strong><%= @user.answer %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Contact Information</div>
+        <div class="panel-body">
+          <strong>E-Mail: </strong><%= @user.email %><br>
+          <strong>Phone: </strong><%= @user.phone %><br>
+          <strong>Address: </strong><%= @user.address %>, <%= @user.city %>, <%= @user.country %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Projects</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Goal</th>
+      <th>Duration</th>
+      <th>Markdown</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @user.projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= project.goal %></td>
+        <td><%= project.duration %></td>
+        <td><%= project.markdown %></td>
+        <td><%= project.user %></td>
+        <td><%= link_to 'Show', project, :class => "btn btn-link" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), :class => "btn btn-link" %></td>
+
+        <td><%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-link" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+</div>

@@ -1,0 +1,86 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-sm-5">
+    <form>
+      <div class="form-group">
+        <label for="user_first_name"><%= form.label :first_name %></label>
+        <%= form.text_field :first_name, id: :user_first_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_last_name"><%= form.label :last_name %></label>
+        <%= form.text_field :last_name, id: :user_last_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_phone"><%= form.label :phone %></label>
+        <%= form.text_field :phone, id: :user_phone, class: "form-control" %>
+      </div>
+
+      <div class="form-check">
+        <%= form.check_box :admin, id: :user_admin, class: "form-check-input" %>
+        <label for="user_admin"><%= form.label :admin %></label>
+      </div>
+
+      <div class="form-group">
+        <label for="user_address"><%= form.label :address %></label>
+        <%= form.text_field :address, id: :user_address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_email"><%= form.label :email %></label>
+        <%= form.text_field :email, id: :user_email, class: "form-control", type: :email %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_country"><%= form.label :country %></label>
+        <%= form.text_field :country, id: :user_country, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_city"><%= form.label :city %></label>
+        <%= form.text_field :city, id: :user_city, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_username"><%= form.label :username %></label>
+        <%= form.text_field :username, id: :user_username, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_password"><%= form.label :password %></label>
+        <%= form.text_field :password, id: :user_password, class: "form-control", type: :password %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_security_question"><%= form.label :security_question %></label>
+        <%= form.text_field :security_question, id: :user_security_question, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="user_answer"><%= form.label :answer %></label>
+        <%= form.text_field :answer, id: :user_answer, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <%= link_to 'Cancel', users_path, :class => "btn btn-danger" %>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-7" align="center" style="padding-top: 100px">
+    <%= image_tag("crowdfunding_world.png", alt: "Edit Entry", class: "img-responsive") %>
+  </div>
+<% end %>
