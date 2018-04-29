@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  goal: 1
+  duration: 1
+  markdown: MyString
+  user: one
+  outstanding: false
+
+two:
+  title: MyString
+  description: MyText
+  goal: 1
+  duration: 1
+  markdown: MyString
+  user: two
+  outstanding: false
