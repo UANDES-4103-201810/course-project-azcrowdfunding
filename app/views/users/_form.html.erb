@@ -1,0 +1,23 @@
+<%= form_with(model: users, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-sm-5">
+    <div class="form-group">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, id: :first_name, class: "form-control" %>
+      </div>
+    </div>
+  <div class="col-sm-7" align="center" style="padding-top: 100px">
+    <%= image_tag("crowdfunding_bubbles.png", alt: "Edit Entry", class: "img-responsive") %>
+  </div>
+<% end %>
