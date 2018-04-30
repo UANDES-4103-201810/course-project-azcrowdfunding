@@ -12,10 +12,10 @@ class User < ApplicationRecord
   validates :country, presence: true, length: {minimum: 3}
   validates :city, presence: true, length: {minimum: 3}
   has_many :favorites
-  has_many :projects
   has_many :projects, through: :favorites
   has_many :contributions
   has_many :projects, through: :contributions
+  has_many :projects
   has_many :finance
   has_many :promises, through: :finance
 end
