@@ -3,7 +3,11 @@
   <p id="notice"><%= notice %></p>
 
   <div align="center">
-    <%= image_tag("generic_profile.jpeg",size: "200x200", alt: "Edit Entry", class: "thumb1 img-circle") %>
+    <% if @user.avatar.exists? %>
+      <%= image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle") %>
+    <% else %>
+      <%= image_tag("generic_profile.jpeg",size: "200x200", class: "thumb1 img-circle") %>
+    <% end %>
   </div>
 
   <div align="center" style="padding-top: 10px">
@@ -13,7 +17,7 @@
 
   <div class="row" style="padding-top: 20px">
     <div class="col-sm-7">
-      <div class="panel panel-warning">
+      <div class="panel panel-success">
         <div class="panel-heading">Credentials</div>
         <div class="panel-body">
           <strong>E-mail: </strong><%= @user.email %><br>
