@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CourseProjectAzcrowdfunding</title>
+  <title>AZ Crowdfunding</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "fileinput" %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <%= javascript_include_tag "fileinput.js" %>
 </head>
 
 <body>
@@ -59,7 +61,14 @@
           <li><%= link_to "New Project", new_project_path %></li>
           <li><%= link_to "Profile", current_user %></li>
           <% if current_user.admin %>
-            <li><%= link_to "Admin", show_all_path %></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+              <div class="dropdown-menu">
+                <a><%= link_to "All Users", show_all_path, class: "btn" %></a>
+                <br>
+                <a><%= link_to "All Projects", projects_path, class: "btn" %></a>
+              </div>
+            </li>
           <% end %>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
 

@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.user_id = current_user.id
+    project.user_id = current_user.id
 
     respond_to do |format|
       if @project.save
@@ -62,6 +62,16 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def add_to_whishlist
+    element = Favorite.new(user: current_user, project: @project)
+    flash[:success] = "Added to Wishlist"
+    element.save
+    respond_to do |format|
+      format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
   end
