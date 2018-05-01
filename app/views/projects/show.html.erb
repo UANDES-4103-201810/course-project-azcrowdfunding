@@ -10,7 +10,7 @@
       <% if current_user.id == @project.user_id %>
         <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
       <% end %>
-      <%= link_to "Add to Wishlist (no funca)", add_to_whishlist_path, :class => "btn btn-success" %>
+      <%= link_to "Add to Wishlist", action: 'add_to_wishlist' %>
     </div>
     <div class="col-sm-6" style="padding-left: 100px; padding-right: 75px">
       <div class="row" align="center">

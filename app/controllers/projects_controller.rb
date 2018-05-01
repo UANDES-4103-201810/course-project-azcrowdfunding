@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :add_to_wishlist]
 
   # GET /projects
   # GET /projects.json
@@ -66,12 +66,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def add_to_whishlist
+  def add_to_wishlist
     element = Favorite.new(user: current_user, project: @project)
-    flash[:success] = "Added to Wishlist"
     element.save
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
