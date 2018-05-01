@@ -25,6 +25,10 @@ pre {
   height:200px;
 }
 
+textarea {
+  resize: vertical; /* user can resize vertically, but width is fixed */
+}
+
 th {
   padding-bottom: 5px;
 }
