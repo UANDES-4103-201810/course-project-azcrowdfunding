@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'show_all', to: 'users#show_all'
   get 'show_my_fav', to: 'favorites#show_my_fav'
   get 'add_to_wishlist' => 'projects#add_to_wishlist'
+  get 'show_by_cat', to: 'categories#show_by_cat'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#index'
