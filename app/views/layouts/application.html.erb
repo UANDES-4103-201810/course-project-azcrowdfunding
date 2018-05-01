@@ -59,6 +59,7 @@
           <% if user_signed_in? %>
           <li><%= link_to "My Projects", my_projects_path  %></li>
           <li><%= link_to "New Project", new_project_path %></li>
+          <li><%= link_to "Wishlist", show_my_fav_path %></li>
           <li><%= link_to "Profile", current_user %></li>
           <% if current_user.admin %>
             <li class="nav-item dropdown">

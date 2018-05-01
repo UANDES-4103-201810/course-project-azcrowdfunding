@@ -18,3 +18,5 @@ Project.create(title: 'Rubbee X', description: "It’s a lightweight conversion 
 Project.create(title: 'Moai', description: "A glass-cleaning robot which autonomously propels itself around your fish tank, scrubbing algae as it goes. It can also monitor tank pH levels, salinity, ORP, temperature, and more.", goal: '2200', duration: '300', markdown: 'www.google.com', user_id: '2', outstanding: 'false')
 Project.create(title: 'Makerbuino', description: "Why buy a handheld video game device when you can build your own? ", goal: '2200', duration: '300', markdown: 'www.google.com', user_id: '3', outstanding: 'false')
 Project.create(title: 'Atari Pong', description: "Coffee table-sized tribute to one of the world’s first video games. Recreating Atari’s classic Pong by way of magnets and metal bars for controlling the physical game pieces.", goal: '2200', duration: '300', markdown: 'www.google.com', user_id: '4', outstanding: 'false')
+
+Favorite.create(user_id: 3, project_id: 5)

@@ -11,7 +11,9 @@ class FavoritesController < ApplicationController
   # GET /favorites/1.json
   def show
   end
-
+  def show_my_fav
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
   # GET /favorites/new
   def new
     @favorite = Favorite.new

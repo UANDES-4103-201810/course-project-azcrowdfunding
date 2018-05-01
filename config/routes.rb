@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'my_projects', to: 'projects#show_my'
   get 'show_all', to: 'users#show_all'
   post 'add_to_whishlist', to: 'projects#add_to_whishlist'
+  get 'show_my_fav', to: 'favorites#show_my_fav'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#index'
