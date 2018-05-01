@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
   def show_my_fav
     @favorites = Favorite.where(user_id: current_user.id)
   end
+
   # GET /favorites/new
   def new
     @favorite = Favorite.new

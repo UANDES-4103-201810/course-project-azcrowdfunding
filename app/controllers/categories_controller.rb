@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.group(:tag)
+
   end
 
   # GET /categories/1
@@ -15,6 +16,10 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+  end
+  def show_by_cat
+    @categories = Category.where(tag: params[:format])
+    @tagname = params[:format]
   end
 
   # GET /categories/1/edit

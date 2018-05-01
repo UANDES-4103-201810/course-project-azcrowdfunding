@@ -20,3 +20,10 @@ Project.create(title: 'Makerbuino', description: "Why buy a handheld video game 
 Project.create(title: 'Atari Pong', description: "Coffee table-sized tribute to one of the world’s first video games. Recreating Atari’s classic Pong by way of magnets and metal bars for controlling the physical game pieces.", goal: '2200', duration: '300', markdown: 'www.google.com', user_id: '4', outstanding: 'false')
 
 Favorite.create(user_id: 3, project_id: 5)
+Category.create(tag: "Tech",project_id:1)
+Category.create(tag: "Sports",project_id:2)
+Category.create(tag: "Animals",project_id:3)
+Category.create(tag: "Sports",project_id:4)
+Category.create(tag: "Animals",project_id:5)
+Category.create(tag: "Geek",project_id:6)
+Category.create(tag: "Geek",project_id:7)
