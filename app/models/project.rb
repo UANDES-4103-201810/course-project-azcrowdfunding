@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many :users, through: :favorites
   has_many :project_categories
   has_many :categories, through: :project_categories
+  has_many :favorited_by, through: :favorites, source: :user
+
 
   validates :title, presence: true
   validates :description, presence: true
