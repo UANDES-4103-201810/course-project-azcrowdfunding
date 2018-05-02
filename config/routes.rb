@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'show_all', to: 'users#show_all'
   get 'show_my_fav', to: 'favorites#show_my_fav'
   get 'show_my_waiting', to: 'projects#show_my_waiting'
+  get 'show_my_funded', to: 'projects#show_my_funded'
   resources :projects do
     put :favorite, on: :member
   end

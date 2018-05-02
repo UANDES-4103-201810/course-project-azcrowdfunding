@@ -32,6 +32,19 @@ Contribution.create(amount: 123, user_id: 1, project_id: 3, status: false )
 Contribution.create(amount: 123, user_id: 1, project_id: 4, status: false )
 Contribution.create(amount: 123, user_id: 1, project_id: 5, status: false )
 Contribution.create(amount: 123, user_id: 2, project_id: 6, status: false )
+Contribution.create(amount: 123, user_id: 1, project_id: 3, status: true )
+Contribution.create(amount: 123, user_id: 1, project_id: 4, status: true )
+Contribution.create(amount: 123, user_id: 1, project_id: 5, status: true )
+Contribution.create(amount: 123, user_id: 2, project_id: 6, status: true )
+
+Promise.create(title: 'Special Product', description: 'we will send you a customized product only for you', edd: '2018/12/12', amount: 500, project_id: 3)
+Promise.create(title: 'Your name in our videos', description: 'we will say your name in one of our videos', edd: '2018/12/12', amount: 1500, project_id: 3)
+
+Finance.create(user_id: 1, promise_id: 1, status: false)
+Finance.create(user_id: 1, promise_id: 1, status: true)
+Finance.create(user_id: 1, promise_id: 2, status: true)
+
+
 
 
 

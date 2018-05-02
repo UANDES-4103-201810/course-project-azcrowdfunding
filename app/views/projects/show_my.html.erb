@@ -2,7 +2,7 @@
   <div class="row">
     <%= link_to 'All', my_projects_path%>
     <%= link_to 'Waiting', show_my_waiting_path %>
-    <%= link_to 'Funded', :class => "btn btn-primary" %>
+    <%= link_to 'Funded', show_my_funded_path  %>
   </div>
   <h1>Projects</h1>
     <% current_user.projects.each do |project| %>

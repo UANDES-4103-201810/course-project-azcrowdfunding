@@ -6,7 +6,7 @@
     <%= link_to 'Waiting', show_my_waiting_path %>
     <%= link_to 'Funded', show_my_funded_path  %>
   </div>
-  <h1>Projects Waiting For Funding  </h1>
+  <h1>Projects Funded  </h1>
   <table class="table">
     <thead>
     <tr>
@@ -26,7 +26,7 @@
         <td><%= contribution.amount %></td>
         <td>Contribution</td>
         <td>---</td>
-        <td><%= User.find_by(id:contribution.user_id).first_name%></td>
+        <td><%= User.find_by(id: contribution.user_id).first_name %></td>
         <td><%= link_to 'Show project', Project.find_by(id: contribution.project_id), :class => "btn btn-link" %></td>
       </tr>
     <%end%>

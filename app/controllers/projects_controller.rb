@@ -24,9 +24,15 @@ class ProjectsController < ApplicationController
   def show_my_waiting
     @my_projects = Project.where(user_id: current_user.id)
     @contributions = Contribution.where(project_id: @my_projects, status: false)
-
+    @promises = Promise.where(project_id: @my_projects)
+    @finances = Finance.joins(:promise).where(promise_id: @promises, status: false)
   end
-
+  def show_my_funded
+    @my_projects = Project.where(user_id: current_user.id)
+    @contributions = Contribution.where(project_id: @my_projects, status: true)
+    @promises = Promise.where(project_id: @my_projects)
+    @finances = Finance.joins(:promise).where(promise_id: @promises, status: true)
+  end
   # GET /projects/1/edit
   def edit
   end
