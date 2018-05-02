@@ -13,16 +13,18 @@
     </thead>
     <tbody>
     <% @categories.each do |category| %>
-      <tr>
-        <td><%= Project.find_by_id(category.project_id).title %></td>
-        <td><%= Project.find_by_id(category.project_id).description%></td>
-        <td><%= Project.find_by_id(category.project_id).goal %></td>
-        <td><%= Project.find_by_id(category.project_id).duration %></td>
-        <td><%= Project.find_by_id(category.project_id).markdown %></td>
+        <%category.projects.each do |project|%>
+        <tr>
+        <td><%=project.title %></td>
+        <td><%= project.description%></td>
+        <td><%= project.goal %></td>
+        <td><%= project.duration %></td>
+        <td><%= project.markdown %></td>
 
-        <td><%= link_to 'Show', Project.find_by_id(category.project_id), :class => "btn btn-link" %></td>
+        <td><%= link_to 'Show', project, :class => "btn btn-link" %></td>
+        </tr>
+          <%end %>
 
-      </tr>
     <% end %>
     </tbody>
   </table>

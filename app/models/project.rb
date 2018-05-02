@@ -7,8 +7,8 @@ class Project < ApplicationRecord
   has_many :users, through: :contributions
   has_many :promises
   has_many :users, through: :favorites
-  has_many :categories
-  accepts_nested_attributes_for :categories
+  has_many :project_categories
+  has_many :categories, through: :project_categories
 
   validates :title, presence: true
   validates :description, presence: true
