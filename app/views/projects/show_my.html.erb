@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="row">
+    <%= link_to 'All', my_projects_path%>
+    <%= link_to 'Waiting', :class => "btn btn-primary" %>
+    <%= link_to 'Funded', :class => "btn btn-primary" %>
+  </div>
   <h1>Projects</h1>
     <% current_user.projects.each do |project| %>
       <div class="row">
