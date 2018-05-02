@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :add_to_wishlist]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :favorite]
 
   # GET /projects
   # GET /projects.json
@@ -72,13 +72,13 @@ class ProjectsController < ApplicationController
   def favorite
     type = params[:type]
     if type == "favorite"
-      current_user.favorites << @project
-      redirect_to :back, notice: "Added to Wishlist"
+      current_user.favorite_projects << @project
+      redirect_to project_path(@project), notice: "Added to Wishlist"
     elsif type == "unfavorite"
-      current_user.favorites.delete(@project)
-      redirect_to :back, notice: "Removed from Wishlist"
+      current_user.favorite_projects.delete(@project)
+      redirect_to project_path(@project), notice: "Removed from Wishlist"
     else
-      redirect_to :back, notice: "Nothing happend"
+      redirect_to project_path(@project), notice: "Nothing happend"
     end
   end
 
