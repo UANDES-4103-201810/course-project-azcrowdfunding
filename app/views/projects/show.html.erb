@@ -45,8 +45,13 @@
       </div>
       <div class="row">
         <h4>Promises</h4>
-
-        <p>Promises are listed here</p>
+        <div>
+       <% @project.promises.each do |promise|%>
+         <tr>
+           <p> * <%=promise.title%></p>
+         </tr>
+        <%end %>
+        </div>
       </div>
     </div>
   </div>
