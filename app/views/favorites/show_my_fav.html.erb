@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <% @favorites.each do |favorite| %>
+    <% current_user.favorite_projects.each do |favorite| %>
       <tr>
         <td><%= favorite.project.title %></td>
         <td><%= favorite.project.description %></td>

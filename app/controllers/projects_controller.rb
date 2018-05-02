@@ -69,12 +69,16 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def add_to_wishlist
-    element = Favorite.new(user: current_user, project: @project)
-    element.save
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @project
+      redirect_to :back, notice: "Added to Wishlist"
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@project)
+      redirect_to :back, notice: "Removed from Wishlist"
+    else
+      redirect_to :back, notice: "Nothing happend"
     end
   end
 
