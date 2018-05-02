@@ -6,16 +6,20 @@
       <%= image_tag(@project.main_image.url(:large), class: "img-fluid img-thumbnail") %>
       <br>
       <br>
-      <%= link_to 'Get to know the publisher', @project.user, :class => "btn btn-info" %>
-      <% if current_user.id == @project.user_id %>
-        <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
-      <% end %>
-      <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put %>
-      <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put %>
+      <div class="col-sm-6">
+        <%= link_to 'Get to know the publisher', @project.user, :class => "btn btn-info" %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put, class: "btn btn-success btn-sm" %>
+        <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put, class: "btn btn-danger btn-sm" %>
+      </div>
     </div>
     <div class="col-sm-6" style="padding-left: 100px; padding-right: 75px">
       <div class="row" align="center">
         <h1><%= @project.title %></h1>
+        <% if current_user.id == @project.user_id %>
+          <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
+        <% end %>
       </div>
       <div class="row">
         <p>Catogiries go here...</p>
@@ -46,6 +50,7 @@
       </div>
     </div>
   </div>
+  <br>
   <div class="row">
     <h2>Markdown</h2>
   </div>

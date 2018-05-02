@@ -42,6 +42,7 @@
         <%= form.label :main_image %><br/>
         <%= form.file_field :main_image, class: "file" %>
       </div>
+
       <div class="form-group">
         <%= form.collection_check_boxes :category_ids, Category.all, :id, :tag%>
       </div>
