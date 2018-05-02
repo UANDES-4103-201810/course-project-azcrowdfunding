@@ -21,6 +21,11 @@ class ProjectsController < ApplicationController
     @project = Project.new
 
   end
+  def show_my_waiting
+    @my_projects = Project.where(user_id: current_user.id)
+    @contributions = Contribution.where(project_id: @my_projects, status: false)
+
+  end
 
   # GET /projects/1/edit
   def edit

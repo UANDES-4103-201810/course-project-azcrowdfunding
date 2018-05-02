@@ -27,3 +27,11 @@ Project.create(title: 'Atari Pong', description: "Coffee table-sized tribute to 
 
 Favorite.create(user_id: 3, project_id: 5)
 
+Contribution.create(amount: 123, user_id: 1, project_id: 2, status: false )
+Contribution.create(amount: 123, user_id: 1, project_id: 3, status: false )
+Contribution.create(amount: 123, user_id: 1, project_id: 4, status: false )
+Contribution.create(amount: 123, user_id: 1, project_id: 5, status: false )
+Contribution.create(amount: 123, user_id: 2, project_id: 6, status: false )
+
+
+

@@ -1,0 +1,33 @@
+<div class="container">
+
+
+  <div class="row">
+    <%= link_to 'All', my_projects_path%>
+    <%= link_to 'Waiting', :class => "btn btn-primary" %>
+    <%= link_to 'Funded', :class => "btn btn-primary" %>
+  </div>
+  <h1>Projects Waiting </h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% @contributions.each do |contribution| %>
+      <tr>
+        <td><%= Project.find_by(id: contribution.project_id).title %></td>
+        <td><%= contribution.amount %></td>
+        <td>Waiting</td>
+
+      </tr>
+    <%end%>
+
+
+    </tbody>
+  </table>
+</div>
