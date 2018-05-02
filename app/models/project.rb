@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  has_attached_file :main_image, styles: { large: "900x900>", medium: "300x300>", small: "80x80#", thumb: "30x30#" }, default_url: "/images/generic_profile.jpeg"
+  has_attached_file :main_image, styles: { large: "900x900>", medium: "300x300>", small: "80x80#", thumb: "30x30#" }, default_url: "no_photo.png"
   validates_attachment_content_type :main_image, content_type: /\Aimage\/.*\z/
   belongs_to :user
   has_many :favorites
