@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'show_my_fav', to: 'favorites#show_my_fav'
   get 'show_my_waiting', to: 'projects#show_my_waiting'
   get 'show_my_funded', to: 'projects#show_my_funded'
+  get 'show_outstanding', to: 'projects#show_outstanding'
+  get 'make_outstanding', to: 'projects#make_outstanding'
   resources :projects do
     put :favorite, on: :member
   end

@@ -18,8 +18,8 @@
         </div>
       </div>
       <div class="col-sm-2" style="padding-top: 70px">
+        <td><%= link_to 'Show', favorite.project, :class => "btn btn-primary btn-block" %></td>
         <% if current_user.id == favorite.project.user_id or current_user.admin %>
-          <td><%= link_to 'Show', favorite.project, :class => "btn btn-primary btn-block" %></td>
           <br>
           <td><%= link_to 'Edit', edit_project_path(favorite.project), :class => "btn btn-warning btn-block" %></td>
           <br>

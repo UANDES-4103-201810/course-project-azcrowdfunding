@@ -1,13 +1,10 @@
 <div class="container">
-  <h1>All Projects</h1>
-  <%= link_to "Filter", categories_path, class: "btn btn-link"%>
-  <br>
-  <br>
+  <h1>Outstanding Projects</h1>
     <% @projects.each do |project| %>
       <div class="row">
         <div class="col-sm-5">
           <%= link_to(image_tag(project.main_image.url(:large), class: "img-fluid img-thumbnail"), project, class: "img-fluid") %>
-          <%= %>
+          <%=  %>
         </div>
         <div class="col-sm-5" style="padding-top: 35px">
           <div class="row">
@@ -33,7 +30,7 @@
         <div class="col-sm-2" style="padding-top: 70px">
           <td><%= link_to 'Show', project, :class => "btn btn-primary btn-block" %></td>
           <% if user_signed_in? %>
-            <% if current_user.id == project.user_id or current_user.admin %>
+            <% if current_user.id == project.user_id %>
               <br>
               <td><%= link_to 'Edit', edit_project_path(project), :class => "btn btn-warning btn-block" %></td>
               <br>

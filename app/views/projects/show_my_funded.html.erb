@@ -1,6 +1,4 @@
 <div class="container">
-
-
   <div class="row">
     <%= link_to 'All', my_projects_path%>
     <%= link_to 'Waiting', show_my_waiting_path %>
@@ -22,22 +20,22 @@
 
     <% @contributions.each do |contribution| %>
       <tr>
-        <td><%= Project.find_by(id: contribution.project_id).title %></td>
+        <td><%= contribution.project.title %></td>
         <td><%= contribution.amount %></td>
         <td>Contribution</td>
         <td>---</td>
-        <td><%= User.find_by(id: contribution.user_id).first_name %></td>
-        <td><%= link_to 'Show project', Project.find_by(id: contribution.project_id), :class => "btn btn-link" %></td>
+        <td><%= contribution.user.first_name %></td>
+        <td><%= link_to 'Show project', contribution.project, :class => "btn btn-link" %></td>
       </tr>
     <%end%>
     <% @finances.each do |finance| %>
       <tr>
-        <td><%= Project.find_by(id: Promise.find_by(id:finance.promise_id).project_id).title %></td>
-        <td><%= Promise.find_by(id: finance.promise_id).amount%></td>
+        <td><%= finance.promise.project.title %></td>
+        <td><%= finance.promise.amount%></td>
         <td>Promise</td>
-        <td><%= Promise.find_by(id: finance.promise_id).title%></td>
-        <td><%= User.find_by(id: finance.user_id).first_name %></td>
-        <td><%= link_to 'Show project', Project.find_by(id: Promise.find_by(id: finance.promise_id).id), :class => "btn btn-link" %></td>
+        <td><%= finance.promise.title%></td>
+        <td><%= finance.user.first_name %></td>
+        <td><%= link_to 'Show project', finance.promise.project, :class => "btn btn-link" %></td>
       </tr>
     <% end %>
 

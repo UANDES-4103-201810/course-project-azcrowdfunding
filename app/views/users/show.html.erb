@@ -1,6 +1,5 @@
 <div class="container">
 
-  <p id="notice"><%= notice %></p>
 
   <div align="center">
     <% if @user.avatar.exists? %>
@@ -12,8 +11,10 @@
 
   <div align="center" style="padding-top: 10px">
     <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <% if @user.id == current_user.id %>
-      <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
+    <% if user_signed_in? %>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
+      <% end %>
     <% end %>
   </div>
 

@@ -33,6 +33,9 @@ class ProjectsController < ApplicationController
     @promises = Promise.where(project_id: @my_projects)
     @finances = Finance.joins(:promise).where(promise_id: @promises, status: true)
   end
+  def show_outstanding
+    @projects = Project.where(outstanding: true)
+  end
   # GET /projects/1/edit
   def edit
   end
@@ -84,12 +87,23 @@ class ProjectsController < ApplicationController
     type = params[:type]
     if type == "favorite"
       current_user.favorite_projects << @project
-      redirect_to project_path(@project), notice: "Added to Wishlist"
+      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Added to Wishlist"
     elsif type == "unfavorite"
       current_user.favorite_projects.delete(@project)
-      redirect_to project_path(@project), notice: "Removed from Wishlist"
+      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Removed from Wishlist"
     else
-      redirect_to project_path(@project), notice: "Nothing happend"
+      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Nothing happend"
+    end
+  end
+
+  def make_outstanding
+    @project = Project.find(params[:format])
+    if !(@project.outstanding)
+      @project.update(outstanding: true)
+      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is now outstanding"
+    else
+      @project.update(outstanding: false)
+      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is no longer outstanding"
     end
   end
 

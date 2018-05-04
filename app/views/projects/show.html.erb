@@ -1,5 +1,4 @@
 <div class="container">
-  <p id="notice"><%= notice %></p>
   <div class="row" style="padding-top: 50px">
     <div class="col-sm-6" style="padding-top: 75px">
       <!-- SHOW SLIDESHOW WITH IMAGE AND VIDEO -->
@@ -10,19 +9,32 @@
         <%= link_to 'Get to know the publisher', @project.user, :class => "btn btn-info" %>
       </div>
       <div class="col-sm-6">
-        <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put, class: "btn btn-success btn-sm" %>
-        <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put, class: "btn btn-danger btn-sm" %>
+        <% if user_signed_in? %>
+          <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put, class: "btn btn-success btn-sm" %>
+          <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put, class: "btn btn-danger btn-sm" %>
+        <% end %>
       </div>
     </div>
     <div class="col-sm-6" style="padding-left: 100px; padding-right: 75px">
       <div class="row" align="center">
         <h1><%= @project.title %></h1>
-        <% if current_user.id == @project.user_id %>
-          <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
+        <% if user_signed_in? %>
+          <% if current_user.id == @project.user_id %>
+            <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
+          <% end %>
+          <% if current_user.admin %>
+            <br>
+            <%= link_to 'Mark as Outstanding', make_outstanding_path(@project), :class => "btn btn-default btn-sm" %>
+          <% end %>
         <% end %>
       </div>
       <div class="row">
-        <p>Catogiries go here...</p>
+        <h4>Categories</h4>
+        <% @project.categories.each do |category| %>
+          <b style="font-size: 15px; font-style: italic; color: #666666">* <%= category.tag %></b>
+        <% end %>
+        <br><br>
+        <h4>Description</h4>
         <p><%= @project.description %></p>
       </div>
       <br>
@@ -43,16 +55,45 @@
         <p style="font-size: 20px; color: goldenrod;">Campaign open until <%= (@project.created_at.to_date + (@project.duration).months).strftime("%B %e, %Y") %></p>
         <br>
       </div>
-      <div class="row">
-        <h4>Promises</h4>
-        <div>
-       <% @project.promises.each do |promise|%>
-         <tr>
-           <p> * <%=promise.title%></p>
-         </tr>
-        <%end %>
+      <% if user_signed_in? %>
+        <div class="row">
+          <h4>Promises</h4>
+          <% if @project.promises.count == 0 %>
+            <p>This project doesn't have any promises.</p>
+          <% end %>
+          <div>
+         <% @project.promises.each do |promise|%>
+              <div class="row">
+                <div class="col-sm-7">
+                  <p style="font-size: 14px"><%=promise.title%></p>
+                </div>
+                <div class="col-sm-2">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-success  btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                    Buy
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" align="center" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          An E-mail was send to <%= current_user.email %> in order to follow up on transaction.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+          <%end %>
+          </div>
         </div>
-      </div>
+        <br>
+        <div class="row" align="center">
+          <button class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#exampleModalCenter"><b>Support this Project</b></button>
+        </div>
+      <% end %>
     </div>
   </div>
   <br>
