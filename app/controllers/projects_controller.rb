@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
     if @project.user_id != current_user.id and current_user.admin == false
       return redirect_to root_path, notice: "Only admin user can delete this project"
     end
-    ProjectCategory.find_by(projects_id: @project.id).destroy
+    ProjectCategory.find_by(project_id: @project.id).destroy
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
