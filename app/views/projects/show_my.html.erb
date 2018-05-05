@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <%= link_to 'All', my_projects_path%>
-    <%= link_to 'Waiting', show_my_waiting_path %>
-    <%= link_to 'Funded', show_my_funded_path  %>
+      <%= button_to 'All', my_projects_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+      <%= button_to 'Waiting', show_my_waiting_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+      <%= button_to 'Funded', show_my_funded_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
   </div>
   <h1>Projects</h1>
     <% current_user.projects.each do |project| %>
