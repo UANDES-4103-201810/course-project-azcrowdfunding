@@ -44,6 +44,9 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    if !signed_in?
+      return redirect_to root_path, notice: "Cannot create a project if not signed in"
+    end
     @project = Project.new(project_params)
     @project.user_id = current_user.id
 
@@ -76,6 +79,10 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    if @project.user_id != current_user.id and current_user.admin == false
+      return redirect_to root_path, notice: "Only admin user can delete this project"
+    end
+    ProjectCategory.find_by(projects_id: @project.id).destroy
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
