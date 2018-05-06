@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Wishlist Projects</h1>
     <% current_user.favorites.each do |favorite| %>
-    <div class="row">
+    <div class="row animated fadeIn">
       <div class="col-sm-5">
         <%= link_to(image_tag(favorite.project.main_image.url(:large), class: "img-fluid img-thumbnail"), favorite.project, class: "img-fluid") %>
         <%= %>

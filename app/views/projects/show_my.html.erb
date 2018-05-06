@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-      <%= button_to 'All', my_projects_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
-      <%= button_to 'Waiting', show_my_waiting_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
-      <%= button_to 'Funded', show_my_funded_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+      <%= link_to 'All', my_projects_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+      <%= link_to 'Waiting', show_my_waiting_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+      <%= link_to 'Funded', show_my_funded_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
   </div>
   <h1>Projects</h1>
     <% current_user.projects.each do |project| %>
-      <div class="row">
+      <div class="row animated fadeIn">
         <div class="col-sm-5">
           <%= link_to(image_tag(project.main_image.url(:large), class: "img-fluid img-thumbnail"), project, class: "img-fluid") %>
           <%=  %>

@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Categories</h1>
   <br>
-  <%= link_to "Outstanding Projects", show_outstanding_path, class: "btn btn-warning btn-lg btn-block" %>
+  <%= link_to "Outstanding Projects", show_outstanding_path, class: "btn btn-warning btn-lg btn-block animated fadeIn" %>
   <br><br>
-  <%= link_to "All", projects_path, class: "btn btn-default btn-lg btn-block" %>
+  <%= link_to "All", projects_path, class: "btn btn-default btn-lg btn-block animated fadeIn" %>
   <% @categories.each do |category| %>
-    <%= link_to category.tag, show_by_cat_path(category.tag), class: "btn btn-default btn-lg btn-block" %>
+    <%= link_to category.tag, show_by_cat_path(category.tag), class: "btn btn-default btn-lg btn-block animated fadeIn" %>
   <% end %>
   <br>
 </div>
