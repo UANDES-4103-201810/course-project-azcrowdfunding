@@ -11,12 +11,12 @@ class User < ApplicationRecord
   validates :address, presence: true, length: { minimum: 4}
   validates :country, presence: true, length: {minimum: 3}
   validates :city, presence: true, length: {minimum: 3}
-  has_many :projects
-  has_many :favorites
+  has_many :projects, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
   has_many :favorite_projects, through: :favorites, source: :project
-  has_many :contributions
+  has_many :contributions, :dependent => :destroy
   has_many :projects_founded, through: :contributions, source: :project
-  has_many :finance
+  has_many :finance, :dependent => :destroy
   has_many :promises_bought, through: :finance, source: :promise
 
   def is_admin?
