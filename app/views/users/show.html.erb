@@ -1,7 +1,7 @@
 <div class="container">
 
 
-  <div align="center">
+  <div class="animated swing" align="center">
     <% if @user.avatar.exists? %>
       <%= image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle") %>
     <% else %>
@@ -9,7 +9,7 @@
     <% end %>
   </div>
 
-  <div align="center" style="padding-top: 10px">
+  <div align="center" style="padding-top: 10px" class="animated flip">
     <h1><%= @user.first_name %> <%= @user.last_name %></h1>
     <% if user_signed_in? %>
       <% if @user.id == current_user.id %>
@@ -19,7 +19,7 @@
   </div>
 
   <div class="row" style="padding-top: 20px">
-    <div class="col-sm-7">
+    <div class="col-sm-7 animated bounceInLeft">
       <div class="panel panel-success">
         <div class="panel-heading">Credentials</div>
         <div class="panel-body">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col-sm-5">
+    <div class="col-sm-5 animated bounceInRight">
       <div class="panel panel-primary">
         <div class="panel-heading">Contact Information</div>
         <div class="panel-body">

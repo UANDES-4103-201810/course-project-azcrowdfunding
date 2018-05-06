@@ -1,10 +1,10 @@
 <div class="container">
   <div align="center">
-    <%= image_tag("logo.png",size: "320x200", alt: "Edit Entry", class: "animated bounceInDown") %>
-    <h4>Ángeles Aldunate - Alfonso Zúñiga</h4>
+    <%= image_tag("logo.png",size: "320x200", alt: "Edit Entry", class: "animated flip") %>
+    <h4 class="animated flip">Ángeles Aldunate - Alfonso Zúñiga</h4>
 
     <% if user_signed_in? %>
-      <div class="row">
+      <div class="row animated bounceInUp">
         <br>
         <% if current_user.avatar.exists? %>
           <p style="font-size: 18px"><%= image_tag(current_user.avatar.url(:small),size: "60x60", class: "img-circle") %> Hi <%= current_user.first_name %>!</p>
