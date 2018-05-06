@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # before_action :isadmin?, :only[:index, :create, :edit, :show, :update]
   def show
     @user = User.find(params[:id])
   end

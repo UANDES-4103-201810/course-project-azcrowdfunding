@@ -18,4 +18,8 @@ class User < ApplicationRecord
   has_many :projects_founded, through: :contributions, source: :project
   has_many :finance, :dependent => :destroy
   has_many :promises_bought, through: :finance, source: :promise
+
+  def is_admin?
+    self.admin
+  end
 end
