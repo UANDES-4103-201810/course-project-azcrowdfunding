@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :favorite]
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :favorite]
+  before_action :authenticate_user!, only: [ :edit, :update, :destroy, :favorite]
 
   # GET /projects
   # GET /projects.json
@@ -45,9 +45,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    if !signed_in?
-      return redirect_to root_path, notice: "Cannot create a project if not signed in"
-    end
+
     @project = Project.new(project_params)
     @project.user_id = current_user.id
 
