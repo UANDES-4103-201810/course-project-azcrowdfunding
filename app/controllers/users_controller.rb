@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   # before_action :isadmin?, :only[:index, :create, :edit, :show, :update]
   def show
     @user = User.find(params[:id])
+    @projects = @user.projects.count
+    @founded = @user.contributions.where(status: true).count
+    @founded += @user.finance.where(status: true).count
+    @waiting = @user.contributions.where(status: false).count
+    @waiting += @user.finance.where(status: false).count
   end
 
   def show_all

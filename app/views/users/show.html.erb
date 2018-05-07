@@ -1,7 +1,7 @@
 <div class="container">
 
 
-  <div class="animated swing" align="center">
+  <div align="center">
     <% if @user.avatar.exists? %>
       <%= image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle") %>
     <% else %>
@@ -9,7 +9,7 @@
     <% end %>
   </div>
 
-  <div align="center" style="padding-top: 10px" class="animated flip">
+  <div align="center" style="padding-top: 10px">
     <h1><%= @user.first_name %> <%= @user.last_name %></h1>
     <% if user_signed_in? %>
       <% if @user.id == current_user.id %>
@@ -21,9 +21,16 @@
   <div class="row" style="padding-top: 20px">
     <div class="col-sm-7 animated bounceInLeft">
       <div class="panel panel-success">
-        <div class="panel-heading">Credentials</div>
+        <div class="panel-heading">Activities</div>
         <div class="panel-body">
-          <strong>E-mail: </strong><%= @user.email %><br>
+          <h5><%= @user.first_name %> has: </h5>
+          <ul>
+            <li>Started <%= @projects %> campaigns.</li>
+            <li>Founded exactly <%= @founded %> projects.</li>
+            <li><%= @waiting %> contributions still waiting for approval.</li>
+          </ul>
+          <br>
+
         </div>
       </div>
     </div>
@@ -32,6 +39,7 @@
       <div class="panel panel-primary">
         <div class="panel-heading">Contact Information</div>
         <div class="panel-body">
+          <strong>E-mail: </strong><%= @user.email %><br>
           <strong>Phone: </strong><%= @user.phone %><br>
           <strong>Address: </strong><%= @user.address %>, <%= @user.city %>, <%= @user.country %>
         </div>

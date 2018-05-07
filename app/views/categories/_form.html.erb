@@ -11,17 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :tag %>
-    <%= form.text_field :tag, id: :category_tag %>
+  <div class="col-sm-5">
+    <div class="form-group">
+      <%= form.label :tag %>
+      <%= form.text_field :tag, id: :category_tag, class: "form-control" %>
+    </div>
+
+    <div class="actions" align="center">
+      <%= form.submit "Create", class: "btn btn-primary btn-sm" %>
+      <%= link_to 'Back', categories_path, class: "btn btn-danger btn-sm" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :project_id %>
-    <%= form.text_field :project_id, id: :category_project_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
