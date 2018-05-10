@@ -29,15 +29,16 @@
               </div>
             </div>
             <div class="col-sm-2" style="padding-top: 70px">
-              <td><%= link_to 'Show', project, :class => "btn btn-primary btn-block" %></td>
-              <% if user_signed_in? %>
-                <% if current_user.id == project.user_id or current_user.admin %>
-                  <br>
-                  <td><%= link_to 'Edit', edit_project_path(project), :class => "btn btn-warning btn-block" %></td>
-                  <br>
-                  <td><%= link_to 'Delete', project, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-block" %></td>
+
+              <div class="btn-group-vertical" style="width: 100%;">
+                <%= link_to 'Show', project, class: "btn btn-default btn-block", type: 'button' %>
+                <% if user_signed_in? %>
+                  <% if current_user.id == project.user_id or current_user.admin %>
+                    <%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-block", type: 'button' %>
+                    <%= link_to 'Delete', project, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-default btn-block", type: 'button' %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
           <br>

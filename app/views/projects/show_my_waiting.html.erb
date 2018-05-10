@@ -2,9 +2,11 @@
 
 
   <div class="row">
-    <%= link_to 'All', my_projects_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
-    <%= link_to 'Waiting', show_my_waiting_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
-    <%= link_to 'Funded', show_my_funded_path, class: "btn btn-default btn-block btn-sm", role: "button" %>
+    <div class="btn-group">
+      <%= link_to 'All', my_projects_path, class: "btn btn-default btn-sm", type: "button" %>
+      <%= link_to 'Waiting', show_my_waiting_path, class: "btn btn-default btn-sm", type: "button" %>
+      <%= link_to 'Funded', show_my_funded_path, class: "btn btn-default btn-sm", type: "button" %>
+    </div>
   </div>
   <h1>Projects Waiting For Funding  </h1>
   <table class="table">
