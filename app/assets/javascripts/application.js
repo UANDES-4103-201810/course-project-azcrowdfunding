@@ -13,3 +13,16 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+
+$("#featured").ready(function() {
+    $( "#button_featured" ).on( "click", function() {
+        $( "#button_featured" ).addClass("animated fadeOutLeftBig");
+        $( "#featured_heading" ).show();
+        $( "#featured_heading" ).addClass("animated fadeInUp");
+        $( "#featured_carousel" ).show();
+        $( "#featured_carousel" ).addClass("animated fadeInUp");
+    });
+})
+

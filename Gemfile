@@ -58,3 +58,5 @@ gem 'devise'
 gem 'paperclip', '~> 6.0'
 
 gem 'animate-rails'
+
+gem 'jquery-rails'

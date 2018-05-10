@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     put :favorite, on: :member
   end
   get 'show_by_cat', to: 'categories#show_by_cat'
+  get 'show_user_projects', to: 'projects#show_user_projects'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#index'

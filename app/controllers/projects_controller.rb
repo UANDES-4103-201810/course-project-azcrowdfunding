@@ -17,6 +17,12 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
+  def show_user_projects
+    id = params[:id]
+    @projects = Project.all
+    @user = User.find_by_id(id)
+  end
+
   # GET /projects/new
   def new
     @project = Project.new
