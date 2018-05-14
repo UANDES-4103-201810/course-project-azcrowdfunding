@@ -109,7 +109,10 @@ class ProjectsController < ApplicationController
 
   def make_outstanding
     @project = Project.find(params[:format])
-    if !(@project.outstanding)
+    if !(@project.main_image.exists?)
+      @project.update(outstanding: false)
+      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "Featured projects MUST have an image."
+    elsif !(@project.outstanding)
       @project.update(outstanding: true)
       redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is now outstanding"
     else

@@ -23,7 +23,7 @@
                 <% if user_signed_in? %>
                   <% if current_user.admin %>
                     <br>
-                    <%= link_to 'Mark as Outstanding', make_outstanding_path(@project), :class => "btn btn-default btn-sm" %>
+                    <%= link_to 'Mark as Outstanding', make_outstanding_path(project), :class => "btn btn-default btn-sm" %>
                   <% end %>
                 <% end %>
               </div>

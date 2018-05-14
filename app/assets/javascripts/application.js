@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 //= require jquery
 
 
-$("#featured").ready(function() {
+$("document").ready(function() {
     $( "#button_featured" ).on( "click", function() {
         $( "#button_featured" ).addClass("animated fadeOutLeftBig");
         $( "#featured_heading" ).show();
@@ -24,5 +23,4 @@ $("#featured").ready(function() {
         $( "#featured_carousel" ).show();
         $( "#featured_carousel" ).addClass("animated fadeInUp");
     });
-})
-
+});
