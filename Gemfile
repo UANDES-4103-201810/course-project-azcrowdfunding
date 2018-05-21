@@ -60,3 +60,7 @@ gem 'paperclip', '~> 6.0'
 gem 'animate-rails'
 
 gem 'jquery-rails'
+
+gem 'country_select'
+
+gem 'countries'

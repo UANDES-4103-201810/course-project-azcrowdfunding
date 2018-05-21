@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :last_name, presence:true, length: {minimum: 2}
   validates :phone, length: { is: 9 }
   validates :address, presence: true, length: { minimum: 4}
-  validates :country, presence: true, length: {minimum: 3}
+  validates :country, presence: true
   validates :city, presence: true, length: {minimum: 3}
   has_many :projects, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
