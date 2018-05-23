@@ -62,31 +62,35 @@
             <p>This project doesn't have any promises.</p>
           <% end %>
           <div>
-         <% @project.promises.each do |promise|%>
-              <div class="row">
-                <div class="col-sm-7">
-                  <p style="font-size: 14px"><%=promise.title%></p>
-                </div>
-                <div class="col-sm-2">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-success  btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                    Buy
-                  </button>
+            <table class="table">
+              <tbody>
+                <% @project.promises.each do |promise|%>
+                  <tr>
+                    <td><%= promise.title %></td>
+                    <td>$<%= promise.amount %></td>
+                    <td align="center">
+                      <button type="button" class="btn btn-success  btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                        Buy
+                      </button>
+                      <% if current_user == promise.project.user %>
+                        <button class="btn btn-warning btn-sm ">Edit</button>
+                      <% end %>
+                    </td>
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
 
-                  <!-- Modal -->
-                  <div class="modal fade" align="center" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-body">
-                          An E-mail was send to <%= current_user.email %> in order to follow up on transaction.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" align="center" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                An E-mail was send to <b><%= current_user.email %></b> in order to follow up on transaction.
               </div>
-              <br>
-          <%end %>
+            </div>
           </div>
         </div>
         <br>
