@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :favorite]
+
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :favorite, :download_file]
 
   # GET /projects
   # GET /projects.json
@@ -118,6 +119,13 @@ class ProjectsController < ApplicationController
       @project.update(outstanding: false)
       redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is no longer outstanding"
     end
+  end
+  def download_file
+    if @project.main_image.exists?
+      send_file @project.main_image.path
+    else
+        redirect_to project_path(@project), notice: "No Image Found";
+      end
   end
 
   private

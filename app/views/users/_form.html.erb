@@ -1,22 +1,90 @@
-<%= form_with(model: users, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this project from being saved:</h2>
+<%= form_with(model: @user, local: true) do |form| %>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="form-group col-sm-5">
+  <div class="col-sm-1">
+
+  </div>
+
+  <div class="col-sm-5">
+    <h4>Personal Information</h4>
+    <br>
     <div class="form-group">
-        <%= form.label :first_name %>
-        <%= form.text_field :first_name, id: :first_name, class: "form-control" %>
-      </div>
+      <%= form.label :first_name %><br/>
+      <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= form.label :last_name %><br/>
+      <%= form.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :avatar %>
+      <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                  Browser...<%= form.file_field :avatar, class: "file", type: 'file'%>
+                </span>
+            </span>
+        <input type="text" class="form-control" readonly>
+      </div>
+      <img id='img-upload'/>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :phone %><br/>
+      <%= form.text_field :phone, autocomplete: "phone", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address %><br/>
+      <%= form.text_field :address, autocomplete: "address", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :country %><br/>
+      <%= form.country_select :country, {prompt: 'Please select a country', selected: "CL", format: :with_alpha2}, class: 'form-control' %><br>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :city %><br/>
+      <%= form.text_field :city, autocomplete: "city", class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div class="col-sm-5">
+    <h4>Credentials</h4>
+    <br>
+    <div class="form-group">
+      <%= form.label :email %><br/>
+      <%= form.email_field :email, autocomplete: "email", class: "form-control" %>
+    </div>
+
+
+
+    <div class="form-group">
+      <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+      <%= form.password_field :password, autocomplete: "off", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password_confirmation %><br/>
+      <%= form.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :current_password %><br/>
+      <%= form.password_field :current_password, autocomplete: "off", class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Update", class: "btn btn-primary" %>
+    </div>
+  </div>
   <div class="col-sm-7" align="center" style="padding-top: 100px">
     <%= image_tag("crowdfunding_bubbles.png", alt: "Edit Entry", class: "img-responsive") %>
   </div>
