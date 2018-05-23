@@ -48,7 +48,7 @@ $("document").ready(function() {
 
     $("#imgInp").change(function(){
         readURL(this);
-    });
+    });zz
 
     $( "#button_featured" ).on( "click", function() {
         $( "#button_featured" ).addClass("animated fadeOutLeftBig");

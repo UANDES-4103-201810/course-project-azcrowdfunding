@@ -11,6 +11,14 @@ class Project < ApplicationRecord
   has_many :categories, through: :project_categories
   has_many :favorited_by, through: :favorites, source: :user
 
+  has_attached_file :video, styles: {
+      :medium => {
+          :geometry => "640x480",
+          :format => 'mp4'
+      },
+      :thumb => { :geometry => "160x120", :format => 'jpeg', :time => 10}
+  }, :processors => [:transcoder]
+
 
   validates :title, presence: true
   validates :description, presence: true
