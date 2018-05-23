@@ -13,6 +13,7 @@ class PromisesController < ApplicationController
   end
 
   def edit
+    @promise = Promise.find(params[:id])
   end
 
   def create
@@ -41,11 +42,10 @@ class PromisesController < ApplicationController
   end
 
   def destroy
+    @promise = Promise.find(params[:id])
+    @project = @promise.project
     @promise.destroy
-    respond_to do |format|
-      format.html { redirect_to :back, notice: 'Promise was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Promise deleted"
   end
 
   private

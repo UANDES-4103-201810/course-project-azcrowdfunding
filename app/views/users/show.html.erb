@@ -47,9 +47,9 @@
       <div class="panel panel-primary">
         <div class="panel-heading">Contact Information</div>
         <div class="panel-body">
-          <strong>E-mail: </strong><%= @user.email %><br>
-          <strong>Phone: </strong><%= @user.phone %><br>
-          <strong>Address: </strong><%= @user.address %>, <%= @user.city %>, <%= @user.country %>
+          <strong><i class="far fa-envelope"></i> </strong><%= @user.email %><br>
+          <strong><i class="fas fa-mobile-alt"></i> </strong><%= @user.phone %><br>
+          <strong><i class="fas fa-home"></i> </strong><%= @user.address %>, <%= @user.city %>, <%= @user.country %><br>
           <%= link_to 'Download Profile Picture', download_image_u_path(id: @user), class: "btn btn-link btn-sm" %>
         </div>
       </div>
