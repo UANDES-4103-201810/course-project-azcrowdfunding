@@ -2,7 +2,7 @@
   <div class="row" style="padding-top: 50px">
     <div class="col-sm-6" style="padding-top: 75px">
       <!-- SHOW SLIDESHOW WITH IMAGE AND VIDEO -->
-      <%= image_tag(@project.main_image.url(:large), class: "img-fluid img-thumbnail") %>
+      <%= link_to (image_tag(@project.main_image.url(:large), class: "img-fluid img-thumbnail")), download_image_p_path(id: @project) %>
       <br>
       <br>
       <div class="col-sm-6">

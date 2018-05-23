@@ -56,5 +56,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def download_file
+    if @user.avatar.exists?
+      send_file @user.avatar.path
+    else
+      redirect_to user_path(@user), notice: "No Image Found";
+    end
+  end
+
+
+  def user_params
+    params.require(:user).permit(:email, :last_name, :first_name, :markdown, :outstanding, :main_image, :phone, :address, :country, :city, :avatar_file_name, :avatar_content_type, :avatar_file_size, :admin)
+  end
+
 
 end

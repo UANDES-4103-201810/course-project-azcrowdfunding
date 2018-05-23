@@ -1,12 +1,16 @@
 <div class="container">
   <div class="img-wrapper" align="center">
     <% if @user.avatar.exists? %>
-      <%= image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle") %>
+      <%= link_to(image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle"),download_image_u_path(id: @user)) %>
     <% else %>
       <%= image_tag("generic_profile.jpeg",size: "200x200", class: "thumb1 img-circle") %>
     <% end %>
     <% if user_signed_in? %>
       <% if @user.id == current_user.id %>
+        <div class="img-overlay2" align="left">
+          <%= link_to 'Download', edit_user_registration_path, class: "btn btn-default btn-sm" %>
+        </div>
+
         <div class="img-overlay">
           <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
         </div>
@@ -14,6 +18,7 @@
     <% end %>
 
   </div>
+
 
   <div align="center" style="padding-top: 10px">
     <h1 style="font-size: 48px;"><%= @user.first_name %> <%= @user.last_name %></h1>

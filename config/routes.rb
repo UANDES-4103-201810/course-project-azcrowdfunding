@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'show_my_funded', to: 'projects#show_my_funded'
   get 'show_outstanding', to: 'projects#show_outstanding'
   get 'make_outstanding', to: 'projects#make_outstanding'
+  get 'download_image_p', to: 'projects#download_file'
+  get 'download_image_u', to: 'projects#download_file'
+
   resources :projects do
     put :favorite, on: :member
   end
