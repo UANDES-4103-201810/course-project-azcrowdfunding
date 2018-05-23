@@ -94,25 +94,11 @@ label {
   top: 0;
   bottom: 0;
   left: 0;
-  right: -10%;
-  text-align: center;
-}
-.img-overlay2 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: +10%;
+  right: -15%;
   text-align: center;
 }
 
 .img-overlay:before {
-  content: ' ';
-  display: block;
-  /* adjust 'height' to position overlay content vertically */
-  height: 85%;
-}
-.img-overlay2:before {
   content: ' ';
   display: block;
   /* adjust 'height' to position overlay content vertically */

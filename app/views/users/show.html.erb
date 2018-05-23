@@ -1,18 +1,19 @@
 <div class="container">
   <div class="img-wrapper" align="center">
     <% if @user.avatar.exists? %>
-      <%= link_to(image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle"),download_image_u_path(id: @user)) %>
+      <%= image_tag(@user.avatar.url(:medium),size: "200x200", class: "thumb1 img-circle") %>
     <% else %>
       <%= image_tag("generic_profile.jpeg",size: "200x200", class: "thumb1 img-circle") %>
     <% end %>
     <% if user_signed_in? %>
       <% if @user.id == current_user.id %>
         <div class="img-overlay2" align="left">
-          <%= link_to 'Download', edit_user_registration_path, class: "btn btn-default btn-sm" %>
+
         </div>
 
         <div class="img-overlay">
           <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
+          <%= link_to '<i class="fas fa-download"></i>'.html_safe, download_image_u_path(id: @user), class: "btn btn-default btn-sm" %>
         </div>
       <% end %>
     <% end %>
@@ -49,6 +50,7 @@
           <strong>E-mail: </strong><%= @user.email %><br>
           <strong>Phone: </strong><%= @user.phone %><br>
           <strong>Address: </strong><%= @user.address %>, <%= @user.city %>, <%= @user.country %>
+          <%= link_to 'Download Profile Picture', download_image_u_path(id: @user), class: "btn btn-link btn-sm" %>
         </div>
       </div>
     </div>

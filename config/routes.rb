@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'show_outstanding', to: 'projects#show_outstanding'
   get 'make_outstanding', to: 'projects#make_outstanding'
   get 'download_image_p', to: 'projects#download_file'
-  get 'download_image_u', to: 'projects#download_file'
+  get 'download_image_u', to: 'users#download_file'
 
   resources :projects do
     put :favorite, on: :member

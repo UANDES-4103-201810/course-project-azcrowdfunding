@@ -57,10 +57,11 @@ class UsersController < ApplicationController
   end
 
   def download_file
-    if @user.avatar.exists?
-      send_file @user.avatar.path
+    user = User.find_by(id: params[:id])
+    if user.avatar.exists?
+      send_file user.avatar.path
     else
-      redirect_to user_path(@user), notice: "No Image Found";
+      redirect_to user_path(user), notice: "No Image Found";
     end
   end
 
