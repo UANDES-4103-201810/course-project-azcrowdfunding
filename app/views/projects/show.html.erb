@@ -72,8 +72,7 @@
                     <td><%= promise.title %></td>
                     <td>$<%= promise.amount %></td>
                     <td align="center">
-                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-                        Buy
+                      <%= link_to 'Buy', new_finance_path(promise: promise, project: @project), class: 'btn btn-success btn-sm' %>
                       </button>
                       <% if current_user == @project.user %>
                         <div class="btn-group">
@@ -116,10 +115,10 @@
     var pur= "<%= @project.id%>"
     var neww = " <form action=\"/contribution/create\">\n" +
         "  Amount:<br>\n" +
-        "  <input type=\"number\" name=\"amount\" ><br>\n" +
-        "  <input type=\"hidden\" name=\"project_id\" value="+pur+" ><br>\n" +
+        "  <input class= \"form-control\" type=\"number\" name=\"amount\" ><br>\n" +
+        "  <input type=\"hidden\" name=\"project_id\" value="+pur+" >\n" +
 
-        "  <input type=\"submit\" value=\"Submit\">\n" +
+        "  <input class=\"btn btn-success btn-sm\" type=\"submit\" value=\"Submit\">\n" +
         "</form> "
 
 
