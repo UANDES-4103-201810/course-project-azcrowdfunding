@@ -6,12 +6,15 @@
       <br>
       <br>
       <div class="col-sm-6">
-        <%= link_to 'Get to know the publisher', @project.user, :class => "btn btn-info" %>
+        <%= link_to 'Get to know the publisher', @project.user, :class => "btn btn-info btn-sm" %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6" align="right">
         <% if user_signed_in? %>
-          <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put, class: "btn btn-success btn-sm" %>
-          <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put, class: "btn btn-danger btn-sm" %>
+          <% if !(current_user.favorite_projects.include?(@project)) %>
+            <%= link_to "Add to Wishlist", favorite_project_path(@project, type: "favorite"), method: :put, class: "btn btn-success btn-sm" %>
+          <% else %>
+            <%= link_to "Remove from Wishlist", favorite_project_path(@project, type: "unfavorite"), method: :put, class: "btn btn-danger btn-sm" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -23,7 +26,6 @@
             <%= link_to 'Edit Project', edit_project_path(@project), :class => "btn btn-warning btn-sm" %>
           <% end %>
           <% if current_user.admin %>
-            <br>
             <%= link_to 'Mark as Outstanding', make_outstanding_path(@project), :class => "btn btn-default btn-sm" %>
           <% end %>
         <% end %>
@@ -69,11 +71,14 @@
                     <td><%= promise.title %></td>
                     <td>$<%= promise.amount %></td>
                     <td align="center">
-                      <button type="button" class="btn btn-success  btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                         Buy
                       </button>
-                      <% if current_user == promise.project.user %>
-                        <button class="btn btn-warning btn-sm ">Edit</button>
+                      <% if current_user == @project.user %>
+                        <div class="btn-group">
+                          <%= link_to 'Edit', edit_promise_path(promise), class: 'btn btn-default btn-sm' %>
+                          <%= link_to 'Delete', promise, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-default btn-sm", type: 'button' %>
+                        </div>
                       <% end %>
                     </td>
                   </tr>
@@ -102,7 +107,7 @@
   </div>
   <br>
   <div class="row">
-    <h2>Markdown</h2>
+
   </div>
 </div>
 
