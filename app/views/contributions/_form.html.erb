@@ -1,0 +1,16 @@
+<%= form_for @contributions, url: {action: "create"}, html: {class: "nifty_form"} do |form| %>
+
+  <div class="row">
+  <div class="form-group col-sm-5">
+    <form>
+
+      <div class="form-group">
+        <%= form.label :amount %>
+        <%= form.number_field :amount, id: :contribution_amount, class: "form-control" %>
+      </div>
+
+    </form>
+  </div>
+
+  </div>
+<% end %>

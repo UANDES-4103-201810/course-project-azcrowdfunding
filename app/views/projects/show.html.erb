@@ -60,7 +60,8 @@
       <% if user_signed_in? %>
         <div class="row">
           <h4>Promises</h4>
-          <% if @project.promises.count == 0 %>
+          <% if @project.promises.count == 0%>
+
             <p>This project doesn't have any promises.</p>
           <% end %>
           <div>
@@ -110,13 +111,25 @@
 
   </div>
 </div>
-
 <script> $('#btn1').click(function () {
-    var newb = " <button id = 'botndone' class=\"btn btn-warning btn-md btn-block\" ><b>Done</b></button>"
+
+    var pur= "<%= @project.id%>"
+    var neww = " <form action=\"/contribution/create\">\n" +
+        "  Amount:<br>\n" +
+        "  <input type=\"number\" name=\"amount\" ><br>\n" +
+        "  <input type=\"hidden\" name=\"project_id\" value="+pur+" ><br>\n" +
+
+        "  <input type=\"submit\" value=\"Submit\">\n" +
+        "</form> "
+
+
     var newtext = " Amount:<br>\n" +"  <input type=\"number\" name=\"lastname\">"
-    $('#botnfunding').append(newtext);
-    $('#botnfunding').append(newb);
+    $('#botnfunding').append(neww);
+
     $('#btn1').remove();
 
 
-})</script>>
+})
+
+
+</script>>
