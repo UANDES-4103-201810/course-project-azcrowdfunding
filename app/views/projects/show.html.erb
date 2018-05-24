@@ -51,8 +51,22 @@
               sum += item.promise.amount
             end
           end
+          porcentage = 100*sum/@project.goal
+          if porcentage > 100
+            porcentage = 100
+          end
         %>
-        <p align="center" style="font-size: 24px"><strong>Goal: </strong>$<%= @project.goal %></p>
+        <p align="right"><strong>Goal: </strong>$<%= @project.goal %></p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: <%= porcentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">$ <%= sum %></div>
+        </div>
+        <% if porcentage == 100 %>
+          <div class="animated tada">
+            <b style="font-size: 48px"><i>Thank you!</i></b>
+          </div>
+          <p class="blockquote-footer">We have reached our goal because of all of you and we thank you for believing in our project.</p><br><br>
+
+        <% end %>
         <b style="font-size: 24px; color: coral;">$<%= sum %> Collected</b>
         <p style="font-size: 20px; color: goldenrod;">Campaign open until <%= (@project.created_at.to_date + (@project.duration).months).strftime("%B %e, %Y") %></p>
         <br>
