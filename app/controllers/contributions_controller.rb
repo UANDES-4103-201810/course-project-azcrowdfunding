@@ -14,6 +14,7 @@ class ContributionsController < ApplicationController
   def create
     @contributions = Contribution.new(contribution_params)
     @contributions.user_id = current_user.id
+    @contributions.status = true
     respond_to do |format|
       if @contributions.save
         format.html { redirect_to project_path(params[:project_id]), notice: 'Contribution was successfully created.' }
