@@ -43,8 +43,14 @@ GEM
     animate-rails (1.0.10)
       rails
     arel (8.0.0)
+    autoprefixer-rails (8.4.1)
+      execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap (4.1.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -125,6 +131,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -220,6 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   animate-rails
+  bootstrap
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)

@@ -16,4 +16,9 @@ class Project < ApplicationRecord
   validates :goal, presence: true
   validates :duration, presence: true
   validates :goal, numericality: { greater_than: 0 }
+
+  def self.search(search)
+    where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
+  end
+
 end
