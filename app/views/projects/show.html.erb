@@ -124,13 +124,11 @@
     </div>
   </div>
   <br>
-  <div class="row">
-    <div class="col-sm-6">
-      <h2>About this project</h2>
+  <% if @project.markdown != '' %>
+    <div style="outline: 1px solid darkgray; padding: 25px; background: rgba(255,255,255,0.3);">
       <%= markdown(@project.markdown) %>
     </div>
-
-  </div>
+  <% end %>
 </div>
 <script> $('#btn1').click(function () {
 
