@@ -20,7 +20,7 @@ class PromisesController < ApplicationController
     @promise = Promise.new(promise_params)
     respond_to do |format|
       if @promise.save
-        format.html { redirect_to @promise, notice: 'Promise was successfully created.' }
+        format.html { redirect_to @promise, success: 'Promise was successfully created.' }
         format.json { render :show, status: :created, location: @promise }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class PromisesController < ApplicationController
   def update
     respond_to do |format|
       if @promise.update(promise_params)
-        format.html { redirect_to @promise, notice: 'Promise was successfully updated.' }
+        format.html { redirect_to @promise, info: 'Promise was successfully updated.' }
         format.json { render :show, status: :ok, location: @promise }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class PromisesController < ApplicationController
     @promise = Promise.find(params[:id])
     @project = @promise.project
     @promise.destroy
-    redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Promise deleted"
+    redirect_back fallback_location: { action: "show", id: @project.id }, success: "Promise deleted"
   end
 
   private

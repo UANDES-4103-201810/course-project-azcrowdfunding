@@ -18,7 +18,7 @@ class FinancesController < ApplicationController
     @finances.user_id = current_user.id
     @finances.status = true
     @finances.save
-    redirect_back fallback_location: { action: "show" }, notice: "Promise Acquired"
+    redirect_back fallback_location: { action: "show" }, success: "Promise Acquired"
   end
 
 
