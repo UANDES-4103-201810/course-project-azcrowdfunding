@@ -17,6 +17,7 @@ class ContributionsController < ApplicationController
     @contributions.status = true
     respond_to do |format|
       if @contributions.save
+        UserMailer.with(user: @contributions.project.user).funding_email.deliver_now
         format.html { redirect_to project_path(params[:project_id]), success: 'Contribution was successfully created.' }
         format.json { render :show, status: :created, location: @contributions }
       else

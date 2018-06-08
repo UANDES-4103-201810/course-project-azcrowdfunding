@@ -18,6 +18,8 @@ class FinancesController < ApplicationController
     @finances.user_id = current_user.id
     @finances.status = true
     @finances.save
+    @user = Promise.find_by(id: params[:promise]).project.user
+    UserMailer.with(user: @user).funding_email.deliver_now
     redirect_back fallback_location: { action: "show" }, success: "Promise Acquired"
   end
 
