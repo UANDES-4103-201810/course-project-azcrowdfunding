@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :favorites
   resources :projects
   resources :promises
+  resources :finances
   devise_for :users, :path_prefix => 'd'
   resources :users, only: [:show]
   get 'new_promise', to: 'promises#new'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'download_image_p', to: 'projects#download_file'
   get 'download_image_u', to: 'users#download_file'
   get 'contribution/create', to: 'contributions#create'
+  get 'finance/create', to: 'finances#create'
 
   resources :projects do
     put :favorite, on: :member

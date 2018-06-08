@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
-    <h1>All Projects</h1>
+    <% if @custom_search %>
+      <h1>Results for <b>"<%= params[:search] %>"</b></h1>
+    <% else %>
+      <h1>All Projects</h1>
+    <% end %>
+    <% if @projects.blank? && @custom_search%>
+      <p>There are no projects containing the term <%= params[:search] %>.</p>
+    <% end %>
     <%= link_to "Filter", categories_path, class: "btn btn-link"%>
     <br>
     <br>

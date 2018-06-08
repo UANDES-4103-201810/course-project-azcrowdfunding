@@ -6,6 +6,14 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    if params[:filtered]
+      @custom_search = true
+    end
+    if params[:search]
+      @projects = Project.search(params[:search]).order("created_at DESC")
+    else
+      @projects = Project.all.order("created_at DESC")
+    end
   end
 
   # GET /projects/1
@@ -58,7 +66,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
 
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, success: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -72,7 +80,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, info: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -85,11 +93,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     if @project.user_id != current_user.id and current_user.admin == false
-      return redirect_to root_path, notice: "Only admin user can delete this project"
+      return redirect_to root_path, danger: "Only admin user can delete this project"
     end
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to projects_url, success: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -98,12 +106,12 @@ class ProjectsController < ApplicationController
     type = params[:type]
     if type == "favorite"
       current_user.favorite_projects << @project
-      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Added to Wishlist"
+      redirect_back fallback_location: { action: "show", id: @project.id }, info: "Added to Wishlist"
     elsif type == "unfavorite"
       current_user.favorite_projects.delete(@project)
-      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Removed from Wishlist"
+      redirect_back fallback_location: { action: "show", id: @project.id }, info: "Removed from Wishlist"
     else
-      redirect_back fallback_location: { action: "show", id: @project.id }, notice: "Nothing happend"
+      redirect_back fallback_location: { action: "show", id: @project.id }, info: "Nothing happend"
     end
   end
 
@@ -111,20 +119,20 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:format])
     if !(@project.main_image.exists?)
       @project.update(outstanding: false)
-      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "Featured projects MUST have an image."
+      redirect_back fallback_location: { action: "show", id: params[:id] }, warning: "Featured projects MUST have an image."
     elsif !(@project.outstanding)
       @project.update(outstanding: true)
-      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is now outstanding"
+      redirect_back fallback_location: { action: "show", id: params[:id] }, success: "This project is now outstanding"
     else
       @project.update(outstanding: false)
-      redirect_back fallback_location: { action: "show", id: params[:id] }, notice: "This project is no longer outstanding"
+      redirect_back fallback_location: { action: "show", id: params[:id] }, success: "This project is no longer outstanding"
     end
   end
   def download_file
     if @project.main_image.exists?
       send_file @project.main_image.path
     else
-        redirect_to project_path(@project), notice: "No Image Found";
+        redirect_to project_path(@project), warning: "No Image Found";
       end
   end
 

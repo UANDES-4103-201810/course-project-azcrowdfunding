@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Successfully created User."
+      flash[:success] = "Successfully created User."
       redirect_to root_path
     else
       render :action => 'new'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
 
     if @user.update(user_params)
-      flash[:notice] = "Successfully updated User."
+      flash[:info] = "Successfully updated User."
       redirect_to root_path
     else
       render :action => 'edit'
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "Successfully deleted User."
+      flash[:success] = "Successfully deleted User."
       redirect_to root_path
     end
   end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     if user.avatar.exists?
       send_file user.avatar.path
     else
-      redirect_to user_path(user), notice: "No Image Found";
+      redirect_to user_path(user), warning: "No Image Found";
     end
   end
 

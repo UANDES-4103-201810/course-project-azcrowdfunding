@@ -9,20 +9,16 @@ class FinancesController < ApplicationController
 
   def new
     @finances = Finance.new
+    create
   end
 
   def create
-    @finances = Finance.new(finances_params)
+    @finances = Finance.new
+    @finances.promise_id = params[:promise]
     @finances.user_id = current_user.id
-    respond_to do |format|
-      if @finances.save
-        format.html { redirect_to project_path(params[:project_id]), notice: 'Promise was successfully financed.' }
-        format.json { render :show, status: :created, location: @finances }
-      else
-        format.html { render :new }
-        format.json { render json: @finances.errors, status: :unprocessable_entity }
-      end
-    end
+    @finances.status = true
+    @finances.save
+    redirect_back fallback_location: { action: "show" }, success: "Promise Acquired"
   end
 
 
@@ -35,5 +31,4 @@ class FinancesController < ApplicationController
   def finances_params
     params.permit(:user_id, :project_id, :promise_id)
   end
-
 end
