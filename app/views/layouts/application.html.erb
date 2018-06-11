@@ -52,16 +52,7 @@
             </li>
             <li><%= link_to current_user.first_name, current_user %></li>
           <% if current_user.admin %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-              <div class="dropdown-menu">
-                <a><%= link_to "All Users", show_all_path, class: "btn" %></a>
-                <br>
-                <a><%= link_to "All Projects", projects_path, class: "btn" %></a>
-                <br>
-                <a><%= link_to "Create New Category", new_category_path, class: "btn" %></a>
-              </div>
-            </li>
+            <li><%= link_to 'Admin', rails_admin_path, class: 'navbar_link' %></li>
           <% end %>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
 

@@ -67,3 +67,5 @@ gem 'jquery-rails'
 gem 'country_select'
 
 gem 'countries'
+
+gem 'rails_admin'
