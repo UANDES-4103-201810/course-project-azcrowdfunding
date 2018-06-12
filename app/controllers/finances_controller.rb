@@ -12,15 +12,37 @@ class FinancesController < ApplicationController
     create
   end
 
+  def confirm_finance
+    @finance = Finance.find_by_confirm_token(params[:id])
+    if finances_params
+      @finance.status_activate
+      flash[:success] = "You confirmed the contribution"
+      redirect_to root_url
+    else
+      flash[:error] = 'Error: Contribution'
+      redirect_to root_url
+    end
+
+  end
+
   def create
     @finances = Finance.new
     @finances.promise_id = params[:promise]
     @finances.user_id = current_user.id
-    @finances.status = true
-    @finances.save
-    @user = Promise.find_by(id: params[:promise]).project.user
-    UserMailer.with(user: @user).funding_email.deliver_now
-    redirect_back fallback_location: { action: "show" }, success: "Promise Acquired"
+    @finances.status = false
+    @project = Project.find_by(id: Promise.find_by(id: Promise.find_by(id: params[:promise]).project_id))
+    respond_to do |format|
+      if @finances.save
+
+        UserMailer.funding_email(@finances,current_user).deliver
+        format.html { redirect_to project_path(@project ), success: 'Funding was successfully created.' }
+        format.json { render :show, status: :created, location: @contributions }
+      else
+        format.html { render :new }
+        format.json { render json: @finances.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
 

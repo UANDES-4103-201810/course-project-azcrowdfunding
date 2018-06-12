@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1> You have received a contribution from <%=@user.first_name %>, to confirm please click the link: <%= confirm_contribution_contribution_url(@contribution.confirm_token) %></h1>
+
+<p>Thanks for using AZ Crowdfunding</p>
+</body>
+</html>
