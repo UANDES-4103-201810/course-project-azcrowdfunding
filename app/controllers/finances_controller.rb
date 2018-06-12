@@ -30,13 +30,12 @@ class FinancesController < ApplicationController
     @finances.promise_id = params[:promise]
     @finances.user_id = current_user.id
     @finances.status = false
-    @project = Project.find_by(id: Promise.find_by(id: Promise.find_by(id: params[:promise]).project_id))
+    @project_h = @finances.promise.project
     respond_to do |format|
       if @finances.save
 
         UserMailer.funding_email(@finances,current_user).deliver
-        format.html { redirect_to project_path(@project ), success: 'Funding was successfully created.' }
-        format.json { render :show, status: :created, location: @contributions }
+        format.html { redirect_to project_path(@project_h), success: 'Funding was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @finances.errors, status: :unprocessable_entity }

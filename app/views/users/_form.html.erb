@@ -6,16 +6,19 @@
   </div>
 
   <div class="col-sm-5">
-    <h4>Personal Information</h4>
-    <br>
     <div class="form-group">
       <%= form.label :first_name %><br/>
-      <%= form.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+      <%= form.text_field :first_name, autocomplete: "first_name", class: "form-control", readonly: true %>
     </div>
 
     <div class="form-group">
       <%= form.label :last_name %><br/>
-      <%= form.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+      <%= form.text_field :last_name, autocomplete: "last_name", class: "form-control", readonly: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email %><br/>
+      <%= form.email_field :email, autocomplete: "email", class: "form-control", readonly: true %>
     </div>
 
     <div>
@@ -29,11 +32,6 @@
         <input type="text" class="form-control" readonly>
       </div>
       <img id='img-upload'/>
-    </div>
-
-    <div class="form-group">
-      <%= form.check_box :admin, class: 'form-check-input' %>
-      <%= form.label :admin %>
     </div>
 
     <div class="form-group">
@@ -56,38 +54,13 @@
       <%= form.text_field :city, autocomplete: "city", class: "form-control" %>
     </div>
 
-  </div>
-
-  <div class="col-sm-5">
-    <h4>Credentials</h4>
-    <br>
-    <div class="form-group">
-      <%= form.label :email %><br/>
-      <%= form.email_field :email, autocomplete: "email", class: "form-control" %>
-    </div>
-
-
-
-    <div class="form-group">
-      <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-      <%= form.password_field :password, autocomplete: "off", class: "form-control" %>
-      <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :password_confirmation %><br/>
-      <%= form.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :current_password %><br/>
-      <%= form.password_field :current_password, autocomplete: "off", class: "form-control" %>
-    </div>
-
     <div class="actions">
       <%= form.submit "Update", class: "btn btn-primary" %>
     </div>
+
+  </div>
+
+  <div class="col-sm-5">
+
   </div>
 <% end %>

@@ -12,7 +12,11 @@
         </div>
 
         <div class="img-overlay">
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
+          <% if @user.provider == 'facebook' %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-warning btn-sm" %>
+          <% else %>
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-warning btn-sm" %>
+          <% end %>
           <%= link_to '<i class="fas fa-download"></i>'.html_safe, download_image_u_path(id: @user), class: "btn btn-default btn-sm" %>
         </div>
       <% end %>

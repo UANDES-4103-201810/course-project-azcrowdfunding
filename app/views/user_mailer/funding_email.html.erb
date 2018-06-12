@@ -4,7 +4,7 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1> You have received a funding through Promise from <%=@user.first_name %>, to confirm please click the link: <%= confirm_finance_finance_url(@finance.confirm_token) %></h1>
+<h1> You have received a funding through Promise from <%=@user.first_name %> for <%= @project.title %>, to confirm please click the link: <%= confirm_finance_finance_url(@finance.confirm_token) %></h1>
 
 <p>Thanks for using AZ Crowdfunding</p>
 </body>
