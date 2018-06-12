@@ -69,3 +69,9 @@ gem 'country_select'
 gem 'countries'
 
 gem 'rails_admin'
+
+gem 'therubyracer'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'

@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="form col-sm-5">
+    <h2>Sign up</h2>
+    <%= form_for(@user, url: users_path(@user), :html => { :multipart => true }) do |f| %>
+
+      <%= f.hidden_field :first_name, autofocus: true, autocomplete: @user.first_name, class: "form-control" %>
+      <%= f.hidden_field :last_name, autocomplete: @user.last_name, class: "form-control" %>
+      <%= f.hidden_field :uid, autocomplete: @user.uid, class: "form-control" %>
+      <%= f.hidden_field :provider, autocomplete: @user.provider, class: "form-control" %>
+
+      <div class="form-group">
+        <%= f.label :avatar %>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                  Browser...<%= f.file_field :avatar, class: "file", type: 'file'%>
+                </span>
+            </span>
+          <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload'/>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :email, autocomplete: @user.email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone %><br/>
+        <%= f.text_field :phone, autocomplete: "phone", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address %><br/>
+        <%= f.text_field :address, autocomplete: "address", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :country %><br/>
+        <%= f.country_select :country, {prompt: 'Please select a country', selected: "CL", format: :with_alpha2}, class: 'form-control' %><br>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city %><br/>
+        <%= f.text_field :city, autocomplete: "city", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :password, value: @user.password, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.hidden_field :password_confirmation, value: @user.password, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-7" align="center" style="padding-top: 100px">
+    <%= image_tag("crowdfunding_world.png", alt: "Edit Entry", class: "img-responsive") %>
+  </div>
+</div>
+

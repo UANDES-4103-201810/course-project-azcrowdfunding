@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :promises
   resources :finances
-  devise_for :users, :path_prefix => 'd'
+  devise_for :users, :path_prefix => 'd', controllers: { :omniauth_callbacks => 'callbacks' }
   resources :users, only: [:show]
   get 'new_promise', to: 'promises#new'
   get 'my_projects', to: 'projects#show_my'
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'download_image_u', to: 'users#download_file'
   get 'contribution/create', to: 'contributions#create'
   get 'finance/create', to: 'finances#create'
+  get 'new_facebook', to: 'users#new_facebook'
 
   resources :projects do
     put :favorite, on: :member

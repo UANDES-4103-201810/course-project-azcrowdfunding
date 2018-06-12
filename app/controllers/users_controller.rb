@@ -21,13 +21,33 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_facebook
+    aux = User.find_by_email(params[:info][:email])
+    if aux
+      sign_in_and_redirect aux, success: 'Successfully signed up through Facebook'
+    end
+    @user = User.new
+    @user.uid = params[:uid]
+    @user.provider = params[:provider]
+    info = params[:info]
+    @user.email = info[:email]
+    @user.first_name = info[:first_name]
+    @user.last_name = info[:last_name]
+    @user.password = Devise.friendly_token[0, 20]
+  end
+
   def create
     @user = User.new(user_params)
+    @user.print
+    puts @user.valid?
     if @user.save
-      flash[:success] = "Successfully created User."
-      redirect_to root_path
+      if !(@user.provider.nil?)
+        sign_in_and_redirect @user, success: 'Successfully signed up through Facebook'
+      else
+        redirect_to root_path, success: 'Successfully signed up'
+      end
     else
-      render :action => 'new'
+      redirect_to root_path, danger: 'Log in through Facebook was not successful'
     end
   end
 
@@ -67,7 +87,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:email, :last_name, :first_name, :markdown, :outstanding, :main_image, :avatar,:phone, :address, :country, :city, :avatar_file_name, :avatar_content_type, :avatar_file_size, :admin)
+    params.require(:user).permit(:email, :last_name, :first_name, :markdown, :outstanding, :main_image, :avatar,:phone, :address, :country, :city, :avatar_file_name, :avatar_content_type, :avatar_file_size, :admin, :password, :password_confirmation)
   end
 
 
