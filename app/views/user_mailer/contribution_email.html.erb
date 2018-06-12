@@ -4,8 +4,18 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1> You have received a contribution from <%=@user.first_name %>, to confirm please click the link: <%= confirm_contribution_contribution_url(@contribution.confirm_token) %></h1>
-
-<p>Thanks for using AZ Crowdfunding</p>
+<div class="container" style="padding-top: 30px">
+  <div class="column" align="center">
+    <h1>New contribution from <%=@user.first_name %> <%=@user.last_name %>!</h1>
+    <h2>AZ Crowdfunding</h2>
+  </div>
+  <br>
+  <p>You are one step away from taking one step closer to reach your goal. Just click bellow and that's it!</p>
+  <div class="column" align="center">
+    <a href="<%= confirm_contribution_contribution_url(@contribution.confirm_token) %>" style="align-content: center; text-decoration-color: blue; font-size: 24px"><b>Accept Finance</b></a>
+  </div>
+  <br>
+  <p><i>Thanks for using AZ Crowdfunding</i></p>
+</div>
 </body>
 </html>
