@@ -11,13 +11,27 @@ class ContributionsController < ApplicationController
     @contributions = Contribution.new
   end
 
+
+  def confirm_contribution
+    contr = Contribution.find_by_confirm_token(params[:id])
+    if contribution_params
+      contr.status_activate
+      flash[:success] = "You confirmed the contribution"
+      redirect_to root_url
+    else
+      flash[:error] = 'Error: Contribution'
+      redirect_to root_url
+    end
+
+  end
+
   def create
     @contributions = Contribution.new(contribution_params)
     @contributions.user_id = current_user.id
-    @contributions.status = true
+    @contributions.status = false
     respond_to do |format|
       if @contributions.save
-        UserMailer.with(user: @contributions.project.user).funding_email.deliver_now
+        UserMailer.contribution_email(@contributions,current_user).deliver
         format.html { redirect_to project_path(params[:project_id]), success: 'Contribution was successfully created.' }
         format.json { render :show, status: :created, location: @contributions }
       else
@@ -30,6 +44,7 @@ class ContributionsController < ApplicationController
 
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
 
 
