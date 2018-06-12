@@ -48,11 +48,15 @@
         <%
           sum = 0
           @project.contributions.each do |item|
-            sum += item.amount
+            if item.status == true
+              sum += item.amount
+             end
           end
           Finance.all.each do |item|
             if item.promise.project.id == @project.id
-              sum += item.promise.amount
+              if item.status == true
+                 sum += item.promise.amount
+              end
             end
           end
           porcentage = 100*sum/@project.goal
